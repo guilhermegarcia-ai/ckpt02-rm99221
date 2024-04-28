@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: counting-app-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: counting-app
+  template:
+    metadata:
+      labels:
+        app: counting-app
+    spec:
+      containers:
+      - name: counting-app
+        image: localhost:32000/countingpy:v1
+        ports:
+        - containerPort: 80
